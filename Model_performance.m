@@ -8,14 +8,6 @@ load('/Users/Christoffer/Dropbox/Matching_project/Matching_task/Analysis/Model/c
 [ globMatchAll, rewStreamHorAll, rewStreamVerAll,choiceStreamAll] = global_matching(results);
 
 runs=30; %Used to average the foraging efficiency. 
-%These two are compared
-% tau=1;
-% num=1;
-% for ti=1:8
-%     num=num*2;
-%     tau=[tau,num];
-% end
-% 
 
 %How many values for parameter
 x = 0:0.25:6;
@@ -27,7 +19,6 @@ Totalblocks=results.nblocks;
 
 %The efficacy of the model is based on mean squared. 
 mean_sq=zeros(1,length(tau),runs);
-
 
 
 rewardCount=zeros(1,length(tau),runs);
@@ -47,7 +38,7 @@ probHor = probHor(2:Totalblocks+1);
 %probHor=results.probHor; %If we want to base it on participant
 
 
-
+%Loop over all runs.
 for runsi=1:runs
     if mod(runsi,10)==1;
         fprintf('\n%d',runsi)
@@ -59,7 +50,7 @@ for runsi=1:runs
     localIncome_HorComp=zeros(1,Totaltrials,length(tau));
     localIncome_VerComp=zeros(1,Totaltrials,length(tau));
     
-    
+    %Loop over all parameter values
     for tauer=1:length(tau)
         %disp('New tauer')
         
